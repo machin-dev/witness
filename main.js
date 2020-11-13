@@ -23,7 +23,7 @@ function createWindow () {
 
   // if main window is ready to show, then destroy the splash window and show up the main window
   async function closeSplash() {
-    //await sleep(3000);
+    await sleep(3000);
     splash.destroy();
     mainWindow.show();
   };
