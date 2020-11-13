@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Witness</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/splash.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+</head>
+
+<script>
+    let bkgColor = '#555555';
+    let cirColor = '#3DC1D9';
+    let triColor = '#EEEEEE';
+    let growRate = 1;
+    let eyeImg;
+
+    function preload() {
+        eyeImg = loadImage('static/eye.png');
+    }
+
+    function setup() {
+        var div = document.getElementById('splash');
+        var canvas = createCanvas(div.offsetWidth, div.offsetHeight);
+        canvas.parent('splash');
+        background(bkgColor);
+        noStroke();
+        smooth();
+    }
+
+    function draw() {
+        // Circle
+        fill(cirColor);
+        circle(width / 2, 0, frameCount * growRate * 1.5);
+        // Triangle
+        fill(triColor);
+        var offsetY = height - (frameCount * growRate);
+        if (offsetY < -height) { offsetY = -height }
+        triangle(width / 2, offsetY, 0, height + offsetY, width, height + offsetY);
+        rect(0, height + offsetY, width, 2 * height + offsetY);
+        //
+        var size = width * 0.6;
+        image(eyeImg, (width - size) / 2, (height - size) / 2, size, size);
+        growRate += 0.012;
+    }
+</script>
+
+<body>
+    <div id="splash"></div>
+</body>
+
+</html>

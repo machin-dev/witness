@@ -1,0 +1,42 @@
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    min-height: 2rem;
+}
+
+.header span {
+    font-size: 1.2rem;
+}
+
+.header span i {
+    -webkit-text-stroke: 0.5px #F5F5F5;
+}
+
+.header div {
+    display: flex;
+    align-items: center;
+}
+
+.header div:last-child {
+    justify-content: flex-end;
+}
+
+.header div:last-child a {
+    margin-left: 1rem;
+}
+
+.header a {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--blue);
+}
+
+.header a.button {
+    color: white;
+    padding: 0.4rem 1.6rem;
+    background-color: var(--blue);
+    border-radius: 4px;
+}

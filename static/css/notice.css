@@ -1,0 +1,16 @@
+.notice {
+    display: grid;
+    width: 100%;
+    font-size: 0.8rem;
+    grid-template-columns: 2rem 1fr;
+    background-color: var(--blueLightest);
+}
+
+.notice i {
+    font-size: 1.2rem;
+    color: var(--blue);
+}
+
+.notice div {
+    padding: 1rem;
+}

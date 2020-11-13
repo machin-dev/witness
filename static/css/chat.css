@@ -1,0 +1,24 @@
+.chat {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 5rem 1fr 5rem;
+    row-gap: 2rem;
+}
+
+.chat div {
+    display: flex;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.chat .from {
+    grid-column: 1 / 3;
+    background-color: var(--blueDark);
+    color: var(--primary-text);
+}
+
+.chat .to {
+    grid-column: -3 / -1;
+    background-color: white;
+    border: 1px solid #DDD;
+}

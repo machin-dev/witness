@@ -1,0 +1,40 @@
+nav {
+    display: flex;
+    position: fixed;
+    width: 4rem;
+    height: 100vh;
+    flex-direction: column;
+    background-color: var(--primary-background);
+    font-size: 1.2em;
+}
+
+nav a {
+    display: flex;
+    height: 4rem;
+    width: 100%;
+    background-color: var(--primary-background);
+    color: var(--primary-text);
+    -webkit-text-stroke: 0.5px var(--primary-background);
+    text-decoration: none;
+    align-items: center;
+    transition: 100ms ease;
+    cursor: pointer;
+}
+
+nav a i {
+    text-align: center;
+    font-size: 1.4rem;
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1rem;
+}
+
+nav a:hover {
+    background-color: var(--secondary-background);
+    color: var(--blueLight);
+    -webkit-text-stroke: 0.5px var(--secondary-background);
+}
+
+nav a:last-child {
+    margin-top: auto;
+}

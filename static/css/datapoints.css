@@ -1,0 +1,43 @@
+.datapoints {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    min-height: 2rem;
+    font-size: 0.8rem;
+}
+
+.datapoints a {
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: var(--blue);
+}
+
+.datapoints div {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.datapoints div:last-child {
+    justify-content: flex-end;
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+.datapoints div > div.flag {
+    padding: 0.3rem 1rem 0.4rem 0.4rem;
+    border-radius: 1rem;
+}
+
+.datapoints div > div.flag i {
+    margin-right: 0.4rem;
+    font-size: 1.2rem;
+}
+
+.datapoints div > div.red i {
+    color: var(--red);
+}
+
+.datapoints div > div.red {
+    background-color: var(--redLight);
+}
