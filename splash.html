@@ -11,6 +11,9 @@
 </head>
 
 <script>
+    let name     = ''
+    let version  = 'v1.0.0';
+    let txtColor = '#FFFFFF';
     let bkgColor = '#EEEEEE';
     let cirColor = '#66D3E4';
     let triColor = '#3DC1D9';
@@ -33,17 +36,24 @@
     function draw() {
         // Circle
         fill(cirColor);
-        circle(width / 2, 0, frameCount * growRate * 1.5);
+        circle(width / 2, 0, frameCount * growRate * 1.2);
         // Triangle
         fill(triColor);
         var offsetY = height - (frameCount * growRate);
         if (offsetY < -height) { offsetY = -height }
-        triangle(width / 2, offsetY, 0, height + offsetY, width, height + offsetY);
+        triangle(width / 2, offsetY + (height / 4), 0, height + offsetY, width, height + offsetY);
         rect(0, height + offsetY, width, 2 * height + offsetY);
-        //
-        size = width * 0.5;
+        // Eye
+        var size = width * 0.5;
         image(eyeImg, (width - size) / 2, (height - size) / 2, size, size);
-        growRate += 0.012;
+        // Version
+        fill(txtColor);
+        textAlign(LEFT, BOTTOM);
+        text(name, 8, 8, width - 16, height - 16);
+        textAlign(RIGHT, BOTTOM);
+        text(version, 8, 8, width - 16, height - 16);
+        // Grow
+        growRate += 0.02;
     }
 </script>
 
