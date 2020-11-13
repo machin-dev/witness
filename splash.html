@@ -11,9 +11,9 @@
 </head>
 
 <script>
-    let bkgColor = '#555555';
-    let cirColor = '#3DC1D9';
-    let triColor = '#EEEEEE';
+    let bkgColor = '#EEEEEE';
+    let cirColor = '#66D3E4';
+    let triColor = '#3DC1D9';
     let growRate = 1;
     let eyeImg;
 
@@ -41,7 +41,7 @@
         triangle(width / 2, offsetY, 0, height + offsetY, width, height + offsetY);
         rect(0, height + offsetY, width, 2 * height + offsetY);
         //
-        var size = width * 0.6;
+        size = width * 0.5;
         image(eyeImg, (width - size) / 2, (height - size) / 2, size, size);
         growRate += 0.012;
     }
