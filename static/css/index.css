@@ -41,6 +41,12 @@
     transition: 100ms ease;
 }
 
+
+
 .index a:hover {
     background-color: #F4FAFB;
+}
+
+.index .custom i {
+    border: 1px dashed var(--green);
 }
