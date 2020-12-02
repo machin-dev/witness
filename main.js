@@ -1,9 +1,24 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, ipcMain} = require('electron')
-const path = require('path')
-let mainWindow, splash
+const {app, BrowserWindow, ipcMain} = require('electron');
+const path = require('path');
+const firebase = require('firebase');
+const fs = require('fs');
+const showdown  = require('showdown');
+// Required for side-effects
+require('firebase/auth');
+require('firebase/firestore');
+
+let mainWindow, splash, config;
 
 function createWindow () {
+  // Retrieve config
+  let rawdata = fs.readFileSync('config.json');
+  config = JSON.parse(rawdata);
+  // Initialize Firebase
+  rawdata = fs.readFileSync('static/firebase.json');
+  var firebaseConfig = JSON.parse(rawdata);
+	firebase.initializeApp(firebaseConfig);
+  firestore = firebase.firestore();
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 960,
@@ -15,15 +30,15 @@ function createWindow () {
       nodeIntegration: true,
       webSecurity: false
     }
-  })
+  });
 
   splash = new BrowserWindow({width: 200, height: 200, transparent: true, frame: false, alwaysOnTop: true});
   splash.loadURL(`file://${__dirname}/splash.html`);
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/${config.settings.homepage}`);
 
   // if main window is ready to show, then destroy the splash window and show up the main window
   async function closeSplash() {
-    await sleep(3000);
+    await sleep(config.settings.splash_duration);
     splash.destroy();
     mainWindow.show();
   };
@@ -33,13 +48,30 @@ function createWindow () {
   });
 
   // Open the DevTools.
-  mainWindow.removeMenu()
-  //mainWindow.webContents.openDevTools();
+  mainWindow.removeMenu();
+  mainWindow.webContents.openDevTools();
 
   // Set flag on close
   mainWindow.on('closed', function () {
     appClosed = true;
   });
+
+//  // Get Firestore information
+//  var email = config.credentials.email;
+//  var password = config.credentials.password;
+//
+//  firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+//    config.collections.forEach(function(collection) {
+//      firebase.firestore().collection(collection.key).onSnapshot(function(snapshot) {
+//        console.log("Collection: ", collection.title);
+//        snapshot.forEach(function(doc) {
+//          console.log("Current data: ", doc.data());
+//        });
+//      });
+//    });
+//  }).catch(function(error) {
+//    console.log(error.code, error.message);
+//  });
 }
 
 app.whenReady().then(() => {
@@ -58,3 +90,29 @@ function sleep(ms) {
     setTimeout(resolve, ms);
   });
 }
+
+
+ipcMain.on('get-documents', function (event, arg) {
+  console.log("Key:", arg.key);
+  var email = config.credentials.email;
+  var password = config.credentials.password;
+  var documents = [];
+  firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+    firebase.firestore().collection(arg.key).onSnapshot(function(snapshot) {
+      snapshot.forEach(function(doc) {
+        documents.push(doc.data());
+      });
+      event.sender.send('retrieved-documents', documents);
+    });
+  }).catch(function(error) {
+    console.log(error.code, error.message);
+  });
+});
+
+ipcMain.on('test-md', function (event, arg) {
+  conv = new showdown.Converter();
+  text = '# hello, markdown!\n```ruby\ndef test(a, b)\n  @test = [a, b]\nend\n```';
+  html = conv.makeHtml(text);
+  console.log(html);
+  event.sender.send('apply-md', html);
+});

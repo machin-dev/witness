@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Witness</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="static/css/markdown.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/scrollbar.css">
+  <link rel="stylesheet" href="static/css/nav.css">
+  <link rel="stylesheet" href="static/css/chat.css">
+  <link rel="stylesheet" href="static/css/header.css">
+  <link rel="stylesheet" href="static/css/notice.css">
+  <link rel="stylesheet" href="static/css/datapoints.css">
+  <link rel="stylesheet" href="static/css/documents.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html"><img src="static/eye.png"></a>
+    <a href="collections.html" class="current"><i class="far fa-file-alt"></i></a>
+    <a href="/"><i class="far fa-comment-alt"></i></a>
+    <a href="/"><i class="far fa-user"></i></a>
+    <a href="/"><i class="far fa-bell"></i></a>
+    <a href="/"><i class="fas fa-wrench"></i></a>
+    <a id="close-btn"><i class="fas fa-power-off"></i></a>
+  </nav>
+  <main>
+    <div class="header">
+      <div id="title">
+        <span>Witness <i class="fas fa-angle-double-right"></i> Collections</span>
+      </div>
+      <div>
+        <a href="/">Edit Categories</a>
+        <a href="/" class="button">Add Category</a>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="documents-wrapper">
+      <div class="documents">
+        <div><ul id="list"></ul></div>
+        <div><span id="markdown" class="markdown-body"></span></div>
+      </div>
+    </div>
+  </main>
+  <script src="static/documents.js"></script>
+  <script src="static/nav.js"></script>
+</body>
+
+</html>

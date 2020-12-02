@@ -1,0 +1,24 @@
+{
+    "settings": {
+        "splash_duration": 0,
+        "homepage": "documents.html?col=documents"
+    },
+    "credentials": {
+        "email": "testwitness@gmail.com",
+        "password": "testpassword"
+    },
+    "collections": [
+        {
+            "title": "Documents",
+            "key": "documents",
+            "icon": "fas fa-hdd",
+            "author": "Louis Machin"
+        },
+        {
+            "title": "Test",
+            "key": "test",
+            "icon": "fas fa-hdd",
+            "author": "Louis Machin"
+        }
+    ]
+}

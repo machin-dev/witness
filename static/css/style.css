@@ -12,10 +12,14 @@
     --red: #ED5C5C;
     --redLight: #FAD6D6;
 
+    --lightGrey: #EBEBEB;
+    --white : #FFFFFF;
+
+    --primary-border: #E0E0E0;
 
     --primary-background: #606060;
     --secondary-background: #2E2E2E;
-    --primary-text: #FFFFFF;
+    --primary-text: var(--white);
     --secondary-text: var(--blueLight);
 }
 
