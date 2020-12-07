@@ -1,7 +1,7 @@
 {
     "settings": {
         "splash_duration": 0,
-        "homepage": "documents.html?col=documents"
+        "homepage": "builds.html"
     },
     "credentials": {
         "email": "testwitness@gmail.com",

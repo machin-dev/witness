@@ -76,12 +76,12 @@ function createWindow () {
 
 app.whenReady().then(() => {
   createWindow()
-  app.on('activate', function () {
+  app.on('activate', function() {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
 
-app.on('window-all-closed', function () {
+app.on('window-all-closed', function() {
   if (process.platform !== 'darwin') app.quit()
 })
 
@@ -91,9 +91,7 @@ function sleep(ms) {
   });
 }
 
-
-ipcMain.on('get-documents', function (event, arg) {
-  console.log("Key:", arg.key);
+ipcMain.on('get-documents', function(event, arg) {
   var email = config.credentials.email;
   var password = config.credentials.password;
   var documents = [];
@@ -109,10 +107,18 @@ ipcMain.on('get-documents', function (event, arg) {
   });
 });
 
-ipcMain.on('test-md', function (event, arg) {
-  conv = new showdown.Converter();
-  text = '# hello, markdown!\n```ruby\ndef test(a, b)\n  @test = [a, b]\nend\n```';
-  html = conv.makeHtml(text);
-  console.log(html);
-  event.sender.send('apply-md', html);
+ipcMain.on('get-builds', function(event, arg) {
+  var email = config.credentials.email;
+  var password = config.credentials.password;
+  var builds = [];
+  firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+    firebase.firestore().collection('builds').onSnapshot(function(snapshot) {
+      snapshot.forEach(function(build) {
+        builds.push(build.data());
+      });
+      event.sender.send('retrieved-builds', builds);
+    });
+  }).catch(function(error) {
+    console.log(error.code, error.message);
+  });
 });

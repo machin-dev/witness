@@ -1,0 +1,59 @@
+.checks {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat( auto-fit, 5rem );
+}
+
+.checks > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--white);
+    background-color: #E5E5E5;
+    font-size: 0.8rem;
+    width: 5rem;
+}
+
+.checks > div > div {
+    display: flex;
+    padding: 0.25rem;
+    margin: 0;
+}
+
+.checks > div > div:last-child {
+    justify-content: flex-end;
+}
+
+.checks i {
+    font-size: 1rem;
+}
+
+.checks .success i {
+    color: var(--green);
+    background-color: white;
+    height: 1rem;
+    border-radius: 1rem;
+}
+
+.checks .warning i {
+    color: var(--yellow);
+    background-color: white;
+    height: 1rem;
+    border-radius: 1rem;
+}
+
+.checks .failure i {
+    color: var(--red);
+    background-color: white;
+    height: 1rem;
+    border-radius: 1rem;
+}
+
+.checks .next {
+    background-color: #666666;
+    color: white;
+}
+
+.checks .next > div:last-child {
+    align-items: center;
+    padding-right: 4px;
+}

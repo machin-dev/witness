@@ -61,9 +61,9 @@ class FirebaseController
     end
 end
 
-params = ['machin-dev', 'https://machin-dev.firebaseio.com', './static/key.json']
-firebase = FirebaseController.new(*params)
+#params = ['machin-dev', 'https://machin-dev.firebaseio.com', './static/key.json']
+#firebase = FirebaseController.new(*params)
 
 #puts firebase.list_collections.inspect
 
-firebase.collection('documents').each { |doc| puts doc.inspect }
+#firebase.collection('documents').each { |doc| puts doc.inspect }
